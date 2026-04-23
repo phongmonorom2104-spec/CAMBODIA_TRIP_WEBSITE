@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "Roboto";
+  src: url(../font/Roboto/static/Roboto-Regular.ttf);
+}
+@font-face {
+  font-family: "battambang";
+  src: url(../font/Battambang/Battambang-Regular.ttf);
+}
+@font-face {
+  font-family: "Koulen";
+  src: url(../font/Koulen/Koulen-Regular.ttf);
+}
+body {
+  font-family: "Roboto";
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Battambang";
+}
+a.nav-link.active,
+a.nav-link {
+  font-family: "Koulen" !important;
+}
+a.nav-link {
+  color: rgb(8, 8, 111);
+}
+a.nav-link.hover,
+a.nav-link-active {
+  color: rgb(86, 6, 9) !important;
+}

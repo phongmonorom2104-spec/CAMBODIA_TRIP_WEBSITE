@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>City Detail</title>
+
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        color: white;
+        position: relative;
+        padding-top: 120px;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://i.pinimg.com/1200x/6f/d8/4c/6fd84c62d6e72f5067064f84f2874e22.jpg");
+        background-size: cover;
+        background-position: center;
+        filter: blur(8px) brightness(0.7);
+        transform: scale(1.05);
+        z-index: -1;
+      }
+      :root {
+        --z-navbar: 1000;
+        --z-dropdown: 900;
+        --z-modal: 1050;
+      }
+
+      .navbar {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: var(--z-navbar);
+      }
+      .navbar .nav-link,
+      .navbar-brand {
+        color: white !important;
+      }
+      .navbar {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 95%;
+        max-width: 1200px;
+        background: rgba(225, 225, 225, 0.4);
+        backdrop-filter: blur(20px);
+        border-radius: 100px;
+        padding: 10px 20px;
+        border: 1px solid rgba(225, 225, 225, 0.2);
+        z-index: 1000;
+      }
+      .container {
+        max-width: 900px;
+      }
+
+      .hero-img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg custom-navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="photo/Untitled_design__1_-removebg-preview.png"
+            width="130"
+          />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fs-5">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="link.html">Link</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                data-bs-toggle="dropdown"
+              >
+                Category
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="Nomal_letter.html"
+                    >Nomal Letter</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Sliver_letter.html"
+                    >Silver Letter</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Premium_letter.html"
+                    >Premium Letter</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Gold_letter.html"
+                    >Gold Letter</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="#">About Us</a>
+            </li>
+          </ul>
+
+          <form
+            class="d-flex justify-content-center align-items-center p-2 rounded-3"
+          >
+            <button
+              class="btn btn-warning me-2"
+              data-bs-toggle="modal"
+              data-bs-target="#bookingModal"
+            >
+              <a
+                class="bi bi-calendar-check text-black"
+                href="Nomal_letter.html"
+                >Booking</a
+              >
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div id="cityDetail" class="card shadow p-4"></div>
+    </div>
+
+    <script>
+      /* ================= CITY DATA ================= */
+      const cities = {
+        "phnom-penh": {
+          name: "Phnom Penh",
+          img: "https://i.pinimg.com/1200x/6f/d8/4c/6fd84c62d6e72f5067064f84f2874e22.jpg",
+          desc: "Capital city with riverside view and royal palace.",
+          hotel: "⭐ 3 - 5 Star Hotels Available",
+          highlight: "Riverside, Royal Palace, Night Market",
+        },
+
+        "siem-reap": {
+          name: "Siem Reap",
+          img: "https://i.pinimg.com/1200x/5b/a2/ae/5ba2ae8012bb08db10695f6c084f5a66.jpg",
+          desc: "Home of Angkor Wat and ancient Khmer civilization.",
+          hotel: "⭐ 3 - 5 Star Hotels Available",
+          highlight: "Angkor Wat, Old Market, Culture Tour",
+        },
+
+        kampot: {
+          name: "Kampot",
+          img: "https://cambodia-images.com/wp-content/uploads/2023/07/kampot-10-2-kep.jpg",
+          desc: "Peaceful nature, mountains and river view.",
+          hotel: "⭐ 2 - 4 Star Hotels Available",
+          highlight: "Bokor Mountain, River Cruise, Nature",
+        },
+      };
+
+      /* ================= LOAD CITY ================= */
+      function loadCity() {
+        const id = new URLSearchParams(window.location.search).get("id");
+
+        const city = cities[id];
+
+        if (!city) {
+          document.getElementById("cityDetail").innerHTML =
+            "<h3 class='text-danger'>City not found</h3>";
+          return;
+        }
+
+        document.getElementById("cityDetail").innerHTML = `
+    <img src="${city.img}" class="hero-img mb-3">
+
+    <h2>${city.name}</h2>
+
+    <hr>
+
+    <p>${city.desc}</p>
+
+    <h5>Hotel Level</h5>
+    <p>${city.hotel}</p>
+
+    <h5>Highlights</h5>
+    <p>${city.highlight}</p>
+
+    <hr>
+
+    <h4>Travel Letters (Packages)</h4>
+
+    <ul class="list-group">
+      <li class="list-group-item">🟢 Normal Letter → Budget (⭐ 2-3 Hotel)</li>
+      <li class="list-group-item">🔵 Silver Letter → Comfort (⭐ 3-4 Hotel)</li>
+      <li class="list-group-item">🟡 Gold Letter → Premium (⭐ 4-5 Hotel)</li>
+      <li class="list-group-item">🟣 Platinum Letter → Luxury VIP (⭐ 5 Hotel)</li>
+    </ul>
+  `;
+      }
+
+      loadCity();
+    </script>
+  </body>
+</html>

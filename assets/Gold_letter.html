@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="css/bootstrap-grid.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-element-bundle.min.js"></script>
+    <title>Category of letter</title>
+
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        color: white;
+        position: relative;
+        padding-top: 120px;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://i.pinimg.com/1200x/6f/d8/4c/6fd84c62d6e72f5067064f84f2874e22.jpg");
+        background-size: cover;
+        background-position: center;
+        filter: blur(8px) brightness(0.7);
+        transform: scale(1.05);
+        z-index: -1;
+      }
+
+      :root {
+        --z-navbar: 1000;
+        --z-dropdown: 900;
+        --z-modal: 1050;
+      }
+
+      .navbar {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: var(--z-navbar);
+      }
+      .navbar .nav-link,
+      .navbar-brand {
+        color: white !important;
+      }
+      .navbar {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 95%;
+        max-width: 1200px;
+        background: rgba(225, 225, 225, 0.4);
+        backdrop-filter: blur(20px);
+        border-radius: 100px;
+        padding: 10px 20px;
+        border: 1px solid rgba(225, 225, 225, 0.2);
+        z-index: 1000;
+      }
+      h1 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: auto;
+      }
+
+      body {
+        color: #333;
+      }
+
+      .card img {
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .container {
+        padding-top: 100px;
+      }
+
+      .cart-count {
+        background: red;
+        color: white;
+        border-radius: 50%;
+        padding: 2px 8px;
+        font-size: 12px;
+        margin-left: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg custom-navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="photo/Untitled_design__1_-removebg-preview.png"
+            width="130"
+          />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fs-5">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="link.html">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                data-bs-toggle="dropdown"
+              >
+                Category
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="Nomal_letter.html"
+                    >Nomal Letter</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Sliver_letter.html"
+                    >Silver Letter</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Premium_letter.html"
+                    >Premium Letter</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Gold_letter.html"
+                    >Gold Letter</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="#">About Us</a>
+            </li>
+          </ul>
+
+          <form
+            class="d-flex justify-content-center align-items-center p-2 rounded-3"
+          >
+            <button
+              class="btn btn-warning me-2"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#bookingModal"
+            >
+              <i class="bi bi-calendar-check"></i> Booking
+              <span id="cartCount" class="cart-count">0</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <h1 class="text-center mt-4 bg-light p-3 rounded-3 shadow-sm">
+      Gold Letters Recommended for traveller who want to experience the best of
+      Cambodia with a touch of luxury and don't care about the price
+    </h1>
+    <div class="container mt-5 pt-5">
+      <div
+        class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"
+        id="product-list"
+      >
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="photo/siem-reap-pub-street.jpg" class="card-img-top" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Siem Reap</h5>
+              <p class="card-text text-muted">$75.00 USD</p>
+              <button
+                class="btn btn-success w-100 mb-2"
+                onclick="addToCart('Siem Reap', 75)"
+              >
+                Add to Booking
+              </button>
+              <button
+                class="btn btn-warning w-100"
+                onclick="buyNow('Siem Reap', 75)"
+              >
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="photo/da92f1344443763618e649cc4e7c80c7.jpg"
+              class="card-img-top"
+            />
+            <div class="card-body text-center">
+              <h5 class="card-title">Preas Sithaknuk</h5>
+              <p class="card-text text-muted">$50.00 USD</p>
+              <button
+                class="btn btn-success w-100 mb-2"
+                onclick="addToCart('Preas Sithaknuk', 50)"
+              >
+                Add to Booking
+              </button>
+              <button
+                class="btn btn-warning w-100"
+                onclick="buyNow('Preas Sithaknuk', 50)"
+              >
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="photo/image.png" class="card-img-top" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Kompot</h5>
+              <p class="card-text text-muted">$35.00 USD</p>
+              <button
+                class="btn btn-success w-100 mb-2"
+                onclick="addToCart('Kompot', 35)"
+              >
+                Add to Booking
+              </button>
+              <button
+                class="btn btn-warning w-100"
+                onclick="buyNow('Kompot', 35)"
+              >
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img src="photo/licensed-image.jpg" class="card-img-top" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Phnom Penh</h5>
+              <p class="card-text text-muted">$20.00 USD</p>
+              <button
+                class="btn btn-success w-100 mb-2"
+                onclick="addToCart('Phnom Penh', 20)"
+              >
+                Add to Booking
+              </button>
+              <button
+                class="btn btn-warning w-100"
+                onclick="buyNow('Phnom Penh', 20)"
+              >
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="bookingModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content text-dark">
+          <div class="modal-header">
+            <h5 class="modal-title">Your Booking</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <ul class="list-group mb-3" id="cart-items"></ul>
+            <h5>Total: $<span id="total">0.00</span></h5>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btn-success" onclick="checkout()">
+              Confirm Booking
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/product.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

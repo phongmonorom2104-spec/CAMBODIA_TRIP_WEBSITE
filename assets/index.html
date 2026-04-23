@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/bootstrap-grid.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-element-bundle.min.js"></script>
+
+    <title>City in Cambodia</title>
+
+    <style>
+      :root {
+        --z-navbar: 1000;
+        --z-dropdown: 900;
+        --z-modal: 1050;
+      }
+
+      html,
+      body {
+        scroll-behavior: smooth;
+        height: auto;
+        min-height: 100%;
+        margin: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        color: white;
+      }
+
+      .navbar {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: var(--z-navbar);
+      }
+
+      .navbar .nav-link,
+      .navbar-brand {
+        color: white !important;
+      }
+
+      .custom-navbar {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 95%;
+        max-width: 1200px;
+        background: rgba(225, 225, 225, 0.4);
+        backdrop-filter: blur(20px);
+        border-radius: 100px;
+        padding: 10px 20px;
+        border: 1px solid rgba(225, 225, 225, 0.2);
+        z-index: var(--z-navbar);
+      }
+
+      .navbar-toggler {
+        border-color: rgba(255, 255, 255, 0.65);
+      }
+
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+
+      .navbar-toggler-icon {
+        filter: invert(1);
+      }
+
+      swiper-container {
+        width: 100%;
+        height: 100vh;
+      }
+
+      swiper-slide {
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      .slide1 {
+        background-image: url("https://i.pinimg.com/1200x/6f/d8/4c/6fd84c62d6e72f5067064f84f2874e22.jpg");
+      }
+
+      .slide2 {
+        background-image: url("https://i.pinimg.com/1200x/5b/a2/ae/5ba2ae8012bb08db10695f6c084f5a66.jpg");
+      }
+
+      .slide3 {
+        background-image: url("https://cambodia-images.com/wp-content/uploads/2023/07/kampot-10-2-kep.jpg");
+      }
+
+      swiper-slide::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        top: 0;
+        left: 0;
+      }
+
+      .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 80px;
+        z-index: 2;
+      }
+
+      .left h1 {
+        font-size: 50px;
+        font-weight: bold;
+      }
+
+      .left p {
+        font-size: 18px;
+        margin: 20px 0;
+      }
+
+      .btn-explore {
+        padding: 10px 20px;
+        background: #054282;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .right {
+        position: relative;
+        width: 400px;
+        height: 300px;
+      }
+
+      .card {
+        position: absolute;
+        width: 200px;
+        height: 280px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        transition: 0.3s;
+        background: rgba(225, 225, 225, 0.6);
+        color: #212529;
+      }
+
+      .card:hover {
+        transform: translateY(-10px) scale(1.05);
+      }
+
+      @media (max-width: 768px) {
+        .overlay {
+          flex-direction: column;
+          text-align: center;
+          padding: 20px;
+          justify-content: center;
+        }
+
+        .left h1 {
+          font-size: 40px;
+        }
+
+        .right {
+          width: 100%;
+          height: auto;
+          margin-top: 20px;
+          display: flex;
+          justify-content: center;
+        }
+
+        .card {
+          position: relative;
+          width: min(25rem, 100%);
+          height: auto;
+        }
+
+        .custom-navbar {
+          border-radius: 24px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg custom-navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="photo/Untitled_design__1_-removebg-preview.png"
+            width="130"
+          />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fs-5">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="Link.html">Link</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                data-bs-toggle="dropdown"
+              >
+                Category
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="Nomal_letter.html"
+                    >Nomal Letter</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Sliver_letter.html"
+                    >Silver Letter</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Premium_letter.html"
+                    >Premium Letter</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="Gold_letter.html"
+                    >Gold Letter</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="#">About Us</a>
+            </li>
+          </ul>
+
+          <form
+            class="d-flex justify-content-center align-items-center p-2 rounded-3"
+          >
+            <button
+              class="btn btn-warning me-2"
+              data-bs-toggle="modal"
+              data-bs-target="#bookingModal"
+            >
+              <a
+                class="bi bi-calendar-check text-black"
+                href="Nomal_letter.html"
+                >Booking</a
+              >
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <swiper-container
+      direction="vertical"
+      pagination="true"
+      mousewheel="true"
+      speed="1200"
+      autoplay="false"
+      style="height: 100vh"
+    >
+      <swiper-slide class="slide1">
+        <div class="overlay">
+          <div class="left">
+            <h1>PHNOM PENH</h1>
+            <p>Explore the capital city</p>
+            <button class="btn-explore">Explore</button>
+          </div>
+
+          <div class="right">
+            <div class="card" style="width: 25rem">
+              <div class="card-body">
+                <h5 class="card-title">រាជធានី ភ្នំពេញ Phnom Penh</h5>
+                <p class="card-text">
+                  ជាទីក្រុងដ៏ស្រស់ស្អាតមានមាត់ទន្លេនៅខាងមុខរាជវាំងដែលមានទេសភាពយ៉ាងស្រស់ស្អាត
+                  A beautiful city with a river in front of the palace with a
+                  beautiful view.
+                </p>
+                <a
+                  href="Letter_detail.html?id=phnom-penh"
+                  class="btn btn-primary"
+                  >Check for Details..</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </swiper-slide>
+
+      <!-- SLIDE 2 -->
+      <swiper-slide class="slide2">
+        <div class="overlay">
+          <div class="left">
+            <h1>SIEM REAP</h1>
+            <p>Home of Angkor Wat</p>
+            <button class="btn-explore">Explore</button>
+          </div>
+
+          <div class="right">
+            <div class="card" style="width: 25rem">
+              <div class="card-body">
+                <h5 class="card-title">ខេត្ត សៀមរាម Siem Reap province</h5>
+                <p class="card-text">
+                  ជាទឹកដីអច្ចារ្យរបស់ខ្មែរ
+                  និងជារាជធានីរបស់កម្ពុជាកាលេពីសម័យអង្គរដែលមានប្រាសាទ
+                  អង្គរវត្តជាសម្បត្តិវប្បធម៍ជាតិនិងសម្បត្តិបេតិភ័ណ្ឌពិភពលោកដ៏មានតម្លៃ
+                  A great land of Khmer and the capital of Cambodia during the
+                  Angkorian period, with Angkor Wat as a national cultural
+                  treasure and a valuable world heritage
+                </p>
+                <a
+                  href="Letter_detail.html?id=siem-reap"
+                  class="btn btn-primary"
+                  >Check for Details..</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </swiper-slide>
+
+      <!-- SLIDE 3 -->
+      <swiper-slide class="slide3">
+        <div class="overlay">
+          <div class="left">
+            <h1>KAMPOT</h1>
+            <p>Relax and enjoy nature</p>
+            <button class="btn-explore">Explore</button>
+          </div>
+
+          <div class="right">
+            <div class="card" style="width: 25rem">
+              <div class="card-body">
+                <h5 class="card-title">ខេត្ត កំពត Kompot Province</h5>
+                <p class="card-text">
+                  ខេត្តកំពតជាទឹកដីស្រស់ស្អាត មានភ្នំ ទន្លេ និងទេសភាពស្ងប់ស្ងាត់
+                  ទាក់ទាញភ្ញៀវទេសចរ និងជាមោទនភាពរបស់កម្ពុជា Kampot Province is a
+                  beautiful land of mountains, rivers, and peaceful scenery A
+                  charming destination that attracts visitors and represents the
+                  pride of Cambodia
+                </p>
+                <a href="Letter_detail.html?id=kampot" class="btn btn-primary"
+                  >Check for Details..</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+    <script src="js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
